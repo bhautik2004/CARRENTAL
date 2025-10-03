@@ -15,13 +15,13 @@ const Navbar = ({setShowLogin}) => {
 
         <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16 max-sm:border-t border-backgroundColor right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname === '/' ? 'bg-light' : 'bg-white' } ${open ? 'max-sm:translate-x-0' : 'max-sm:-translate-x-full'}`}>
             {menuLinks.map((link,index) => (
-                <Link key={link.index} to={link.path}>
+                <Link key={index} to={link.path}>
                     {link.name}
                 </Link>
             ))}
             <div className='hidden lg:flex item-center text-sm gap-2 border border-borderColor rounded-full px-3 max-w-64'>
                 <input type="text" name="search" id=""  className='py-1.5 w-full bg-transparent outline-none placeholder-gray-500' placeholder='Search Products'/>
-                <img src={assets.search_icon} alt="search" srcset="" />
+                <img src={assets.search_icon} alt="search" />
             </div>
             <div className='flex flex-col sm:flex-row items-start sm:items-center gap-6'>
                 <button onClick={()=> navigate('/owner')} className='cursor-pointer'>Dashboard</button>
