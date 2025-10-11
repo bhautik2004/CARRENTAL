@@ -2,10 +2,12 @@ import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+
 const generateToken = (userId) => {
   const payload = userId;
   return jwt.sign(payload, process.env.JWT_SECRET);
 };
+
 // Register User
 export const registerUser = async (req, res) => {
   try {
@@ -28,7 +30,6 @@ export const registerUser = async (req, res) => {
 };
 
 //Login User
-
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -47,3 +48,14 @@ export const loginUser = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+//Get User Data using Token(JWT)
+export const getUserData = async (req,res)=>{
+  try {
+    const {user} = req;
+    res.json({success:true,user})
+  } catch (error) {
+    console.log(error.messages);
+    res.json({ success: false, message: error.message });
+  }
+}
